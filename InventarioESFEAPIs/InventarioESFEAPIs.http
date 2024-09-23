@@ -1,0 +1,6 @@
+@InventarioESFEAPIs_HostAddress = http://localhost:5262
+
+GET {{InventarioESFEAPIs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
