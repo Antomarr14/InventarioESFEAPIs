@@ -12,7 +12,7 @@ namespace InventarioESFEAPIs.Context
 
         public DbSet<Proveedor> Proveedor { get; set; } 
         public DbSet<Usuario> Usuario { get; set; } 
-
+        public DbSet<Compra> Compra { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>()
