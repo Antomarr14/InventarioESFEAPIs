@@ -10,6 +10,7 @@ namespace InventarioESFEAPIs.Context
         {
         }
 
+        public DbSet<Proveedor> Proveedor { get; set; } 
         public DbSet<Usuario> Usuario { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
