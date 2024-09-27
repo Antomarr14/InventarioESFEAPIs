@@ -15,6 +15,7 @@ namespace InventarioESFEAPIs.Context
         public DbSet<Compra> Compra { get; set; }
         public DbSet<Articulo> Articulo { get; set; }
         public DbSet<Login> Login { get; set; }
+        public DbSet<DetalleCompra> DetalleCompra { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>()
