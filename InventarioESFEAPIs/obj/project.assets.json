@@ -4523,19 +4523,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MINEDUCYT\\.nuget\\packages\\": {}
+    "C:\\Users\\Diego Marroquin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MINEDUCYT\\OneDrive\\Escritorio\\bodega-esfe\\InventarioESFEAPIs\\InventarioESFEAPIs\\InventarioESFEAPIs.csproj",
+      "projectUniqueName": "C:\\Users\\Diego Marroquin\\Desktop\\InventarioESFE\\InventarioESFEAPIs\\InventarioESFEAPIs\\InventarioESFEAPIs.csproj",
       "projectName": "InventarioESFEAPIs",
-      "projectPath": "C:\\Users\\MINEDUCYT\\OneDrive\\Escritorio\\bodega-esfe\\InventarioESFEAPIs\\InventarioESFEAPIs\\InventarioESFEAPIs.csproj",
-      "packagesPath": "C:\\Users\\MINEDUCYT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MINEDUCYT\\OneDrive\\Escritorio\\bodega-esfe\\InventarioESFEAPIs\\InventarioESFEAPIs\\obj\\",
+      "projectPath": "C:\\Users\\Diego Marroquin\\Desktop\\InventarioESFE\\InventarioESFEAPIs\\InventarioESFEAPIs\\InventarioESFEAPIs.csproj",
+      "packagesPath": "C:\\Users\\Diego Marroquin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Diego Marroquin\\Desktop\\InventarioESFE\\InventarioESFEAPIs\\InventarioESFEAPIs\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\MINEDUCYT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Diego Marroquin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4605,7 +4610,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
