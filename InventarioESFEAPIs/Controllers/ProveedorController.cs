@@ -1,5 +1,6 @@
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace InventarioESFEAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize] 
     public class ProveedorController : ControllerBase
     {
         private readonly IProveedorService _proveedorService;

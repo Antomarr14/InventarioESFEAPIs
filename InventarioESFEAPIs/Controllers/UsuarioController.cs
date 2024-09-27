@@ -1,5 +1,6 @@
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace InventarioESFEAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize] // Utilizaremos Authorize para proteger todas las acciones
+                // esto debe ir en todos los controladores
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;

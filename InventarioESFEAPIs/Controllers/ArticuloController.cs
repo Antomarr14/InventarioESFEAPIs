@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace InventarioESFEAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize] 
     public class ArticuloController : ControllerBase
     {
         private readonly IArticuloService _articuloService;

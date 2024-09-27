@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InventarioESFEAPIs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b526601998537f5cb956db215fa3db045af4a906")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f30cd620c2157614d15953a8754e1a4b997c842d")]
 [assembly: System.Reflection.AssemblyProductAttribute("InventarioESFEAPIs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InventarioESFEAPIs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

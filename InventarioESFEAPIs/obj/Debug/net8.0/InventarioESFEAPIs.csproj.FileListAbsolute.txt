@@ -410,3 +410,5 @@ C:\Users\Diego Marroquin\Desktop\InventarioESFE\InventarioESFEAPIs\InventarioESF
 C:\Users\Diego Marroquin\Desktop\InventarioESFE\InventarioESFEAPIs\InventarioESFEAPIs\obj\Debug\net8.0\InventarioESFEAPIs.pdb
 C:\Users\Diego Marroquin\Desktop\InventarioESFE\InventarioESFEAPIs\InventarioESFEAPIs\obj\Debug\net8.0\InventarioESFEAPIs.genruntimeconfig.cache
 C:\Users\Diego Marroquin\Desktop\InventarioESFE\InventarioESFEAPIs\InventarioESFEAPIs\obj\Debug\net8.0\ref\InventarioESFEAPIs.dll
+C:\Users\Diego Marroquin\Desktop\InventarioESFE\InventarioESFEAPIs\InventarioESFEAPIs\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Diego Marroquin\Desktop\InventarioESFE\InventarioESFEAPIs\InventarioESFEAPIs\bin\Debug\net8.0\BCrypt.Net-Next.dll
