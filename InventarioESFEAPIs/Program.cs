@@ -21,6 +21,10 @@ builder.Services.AddScoped<IProveedorService, ProveedorService>();
 builder.Services.AddScoped<ICompraService, CompraService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IDetalleCompraService, DetalleCompraService>();
+builder.Services.AddScoped<IEstadoService, EstadoService>();
+builder.Services.AddScoped<IRolService, RolService>();
+builder.Services.AddScoped<IUsuarioRolService, UsuarioRolService>();
+builder.Services.AddScoped<IControlService, ControlService>();
 builder.Services.AddControllers();
 
 // Configuración de Swagger
