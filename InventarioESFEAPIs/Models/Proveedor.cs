@@ -15,4 +15,5 @@ public class Proveedor
     public string Telefono { get; set; }
     public string Direccion { get; set; }
     public int IdEstado { get; set; }
+
 }
