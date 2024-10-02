@@ -47,7 +47,7 @@ namespace InventarioESFEAPIs.Services.Implementaciones
             var rolExistente = await _context.Rol.FirstOrDefaultAsync(r => r.Id == Id);
             if (rolExistente == null) throw new KeyNotFoundException("Rol no encontrado");
             rolExistente.Nombre = rol.Nombre;
-            rolExistente.Estado = rol.Estado;
+            rolExistente.IdEstado = rol.IdEstado;
             await _context.SaveChangesAsync();
             return rol;
         }
