@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
-using InventarioESFEAPIs.Auth; // Asegúrate de que tengas esta clase para la autenticación JWT
+using InventarioESFEAPIs.Auth;
+using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services; // Asegúrate de que tengas esta clase para la autenticación JWT
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,7 @@ builder.Services.AddScoped<IControlService, ControlService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<IPrestamoService, PrestamoService>();
 builder.Services.AddScoped<ITipoService, TipoService>();
+builder.Services.AddScoped<IPerdidasService, PerdidaService>();
 builder.Services.AddControllers();
 
 // Configuración de Swagger
