@@ -21,6 +21,7 @@ namespace InventarioESFEAPIs.Context
         public DbSet<UsuarioRol> UsuarioRol { get; set; }
         public DbSet<Control> Control { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Prestamo> Prestamo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

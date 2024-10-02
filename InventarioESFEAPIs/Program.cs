@@ -26,6 +26,7 @@ builder.Services.AddScoped<IRolService, RolService>();
 builder.Services.AddScoped<IUsuarioRolService, UsuarioRolService>();
 builder.Services.AddScoped<IControlService, ControlService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IPrestamoService, PrestamoService>();
 builder.Services.AddControllers();
 
 // Configuración de Swagger
