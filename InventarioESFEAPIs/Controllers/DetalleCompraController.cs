@@ -8,6 +8,7 @@ namespace InventarioESFEAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class DetalleCompraController : ControllerBase
     {
         private readonly IDetalleCompraService _detalleCompraService;

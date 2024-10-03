@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InventarioESFEAPIs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+114eef73d947cbdf9611705c8ef355ef879dd5fa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f3bd45eeea4e269b1a58646480a5a044dab2392")]
 [assembly: System.Reflection.AssemblyProductAttribute("InventarioESFEAPIs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InventarioESFEAPIs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -33,6 +33,8 @@ builder.Services.AddScoped<ITipoService, TipoService>();
 builder.Services.AddScoped<IPerdidasService, PerdidaService>();
 builder.Services.AddScoped<IPerdidasService, PerdidaService>();
 builder.Services.AddScoped<IUbicacionService, UbicacionService>();
+builder.Services.AddScoped<IRolControlService, RolControlService>();
+builder.Services.AddScoped<IMarcaService, MarcaService>();
 builder.Services.AddControllers();
 
 // Configuración de Swagger

@@ -25,6 +25,8 @@ namespace InventarioESFEAPIs.Context
         public DbSet<Tipo> Tipo { get; set; }
         public DbSet<Perdidas> Perdidas { get; set; }
         public DbSet<Ubicacion> Ubicacion { get; set; }
+        public DbSet<RolControl> RolControl { get; set; }
+        public DbSet<Marca> Marca { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

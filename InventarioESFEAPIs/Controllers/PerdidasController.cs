@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InventarioESFEAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PerdidaController : ControllerBase
     {
         private readonly IPerdidasService _perdidasService;

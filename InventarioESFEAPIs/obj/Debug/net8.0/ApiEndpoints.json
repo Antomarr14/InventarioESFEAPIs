@@ -131,6 +131,105 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InventarioESFEAPIs.Controllers.CategoriaController",
+    "Method": "GetCategoria",
+    "RelativePath": "api/Categoria",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventarioESFEAPIs.Models.Categoria, InventarioESFEAPIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.CategoriaController",
+    "Method": "CreteCategoria",
+    "RelativePath": "api/Categoria",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoria",
+        "Type": "InventarioESFEAPIs.Models.Categoria",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.Models.Categoria",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.CategoriaController",
+    "Method": "GetCategoria",
+    "RelativePath": "api/Categoria/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.CategoriaController",
+    "Method": "UpdateCategoria",
+    "RelativePath": "api/Categoria/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "categoria",
+        "Type": "InventarioESFEAPIs.Models.Categoria",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.CategoriaController",
+    "Method": "DeleteCategoria",
+    "RelativePath": "api/Categoria/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InventarioESFEAPIs.Controllers.CompraController",
     "Method": "GetCompra",
     "RelativePath": "api/Compra",
@@ -527,6 +626,303 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InventarioESFEAPIs.Controllers.MarcaController",
+    "Method": "GetMarca",
+    "RelativePath": "api/Marca",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventarioESFEAPIs.Models.Marca, InventarioESFEAPIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.MarcaController",
+    "Method": "CreateMarca",
+    "RelativePath": "api/Marca",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "marca",
+        "Type": "InventarioESFEAPIs.Models.Marca",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.Models.Marca",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.MarcaController",
+    "Method": "GetMarca",
+    "RelativePath": "api/Marca/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.MarcaController",
+    "Method": "UpdateMarca",
+    "RelativePath": "api/Marca/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "marca",
+        "Type": "InventarioESFEAPIs.Models.Marca",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.MarcaController",
+    "Method": "DeleteMarca",
+    "RelativePath": "api/Marca/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PerdidaController",
+    "Method": "GetPerdidas",
+    "RelativePath": "api/Perdida",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PerdidaController",
+    "Method": "CreatePerdida",
+    "RelativePath": "api/Perdida",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "perdida",
+        "Type": "InventarioESFEAPIs.Models.Perdidas",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.Models.Perdidas",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PerdidaController",
+    "Method": "GetPerdidaById",
+    "RelativePath": "api/Perdida/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PerdidaController",
+    "Method": "UpdatePerdida",
+    "RelativePath": "api/Perdida/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "perdida",
+        "Type": "InventarioESFEAPIs.Models.Perdidas",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PerdidaController",
+    "Method": "DeletePerdida",
+    "RelativePath": "api/Perdida/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PrestamoController",
+    "Method": "GetPrestamos",
+    "RelativePath": "api/Prestamo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PrestamoController",
+    "Method": "CreatePrestamo",
+    "RelativePath": "api/Prestamo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "prestamo",
+        "Type": "InventarioESFEAPIs.Models.Prestamo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.Models.Prestamo",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PrestamoController",
+    "Method": "GetPrestamoById",
+    "RelativePath": "api/Prestamo/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PrestamoController",
+    "Method": "UpdatePrestamo",
+    "RelativePath": "api/Prestamo/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "prestamo",
+        "Type": "InventarioESFEAPIs.Models.Prestamo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.PrestamoController",
+    "Method": "DeletePrestamo",
+    "RelativePath": "api/Prestamo/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InventarioESFEAPIs.Controllers.ProveedorController",
     "Method": "GetProveedor",
     "RelativePath": "api/Proveedor",
@@ -712,6 +1108,303 @@
     "ContainingType": "InventarioESFEAPIs.Controllers.RolController",
     "Method": "DeleteRol",
     "RelativePath": "api/Rol/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.RolControlController",
+    "Method": "GetRolControl",
+    "RelativePath": "api/RolControl",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventarioESFEAPIs.Models.RolControl, InventarioESFEAPIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.RolControlController",
+    "Method": "CreateRolControl",
+    "RelativePath": "api/RolControl",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rolcontrol",
+        "Type": "InventarioESFEAPIs.Models.RolControl",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.Models.RolControl",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.RolControlController",
+    "Method": "GetRolControl",
+    "RelativePath": "api/RolControl/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.RolControlController",
+    "Method": "UpdateRol",
+    "RelativePath": "api/RolControl/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "rolcontrol",
+        "Type": "InventarioESFEAPIs.Models.RolControl",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.RolControlController",
+    "Method": "DeleteRolControl",
+    "RelativePath": "api/RolControl/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.TipoController",
+    "Method": "GetTipo",
+    "RelativePath": "api/Tipo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventarioESFEAPIs.Models.Tipo, InventarioESFEAPIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.TipoController",
+    "Method": "CreteTipo",
+    "RelativePath": "api/Tipo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipo",
+        "Type": "InventarioESFEAPIs.Models.Tipo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.Models.Tipo",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.TipoController",
+    "Method": "GetTipo",
+    "RelativePath": "api/Tipo/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.TipoController",
+    "Method": "UpdateTipo",
+    "RelativePath": "api/Tipo/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tipo",
+        "Type": "InventarioESFEAPIs.Models.Tipo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.TipoController",
+    "Method": "DeleteTipo",
+    "RelativePath": "api/Tipo/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.UbicacionController",
+    "Method": "GetUbicacion",
+    "RelativePath": "api/Ubicacion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventarioESFEAPIs.Models.Ubicacion, InventarioESFEAPIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.UbicacionController",
+    "Method": "CreteUbicacion",
+    "RelativePath": "api/Ubicacion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ubicacion",
+        "Type": "InventarioESFEAPIs.Models.Ubicacion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.Models.Ubicacion",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.UbicacionController",
+    "Method": "GetUbicacion",
+    "RelativePath": "api/Ubicacion/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.UbicacionController",
+    "Method": "UpdateUbicacion",
+    "RelativePath": "api/Ubicacion/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ubicacion",
+        "Type": "InventarioESFEAPIs.Models.Ubicacion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.UbicacionController",
+    "Method": "DeleteUbicacion",
+    "RelativePath": "api/Ubicacion/{Id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
