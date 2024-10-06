@@ -1,3 +1,4 @@
+using InventarioESFEAPIs.DTO;
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -37,19 +38,22 @@ namespace InventarioESFEAPIs.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Compra>> CreateProveedor([FromBody] Compra compra)
+                public async Task<IActionResult> CreateCompra([FromBody] CompraDTO compraDTO)
         {
-            compra.Id = 0;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            var compraCreado = await _compraService.CreateCompra(compra);
-            return CreatedAtAction(nameof(GetCompra), new { id = compraCreado.Id }, compraCreado);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCompra(int id, [FromBody] Compra compra)
-        {
-            await _compraService.UpdateCompra(compra, id);
-            return NoContent();
+            try
+            {
+                await _compraService.CreateCompraAsync(compraDTO);
+                return Ok(new { Message = "Compra registrada correctamente." });
+            }
+            catch (Exception ex)
+            {
+            return StatusCode(500, new { Message = "Ocurrió un error al registrar la compra.", Details = ex.Message });
+            }
         }
 
         [HttpDelete("{id}")]
