@@ -9,5 +9,5 @@ public interface ICategoriaService
     Task<Categoria> GetCategoriaById(int Id);
     Task<Categoria> CreateCategoria(Categoria categoria);
     Task<Categoria> UpdateCategoria(Categoria categoria, int Id);
-    Task<Categoria> DeleteCategoria(int Id);
+    Task<Categoria> SuprimirCategoriaAsync(int Id);
 }

@@ -22,11 +22,14 @@ public class CategoriaService : ICategoriaService
         return categoria;
     }
 
-    public async Task<Categoria> DeleteCategoria(int Id)
+    public async Task<Categoria> SuprimirCategoriaAsync(int Id)
     {
         var categoria = await _context.Categoria.FirstOrDefaultAsync(c => c.Id == Id);
-        if (categoria == null) throw new KeyNotFoundException("Categoria no encontrada");
-        _context.Categoria.Remove(categoria);
+        if (categoria == null)
+        throw new KeyNotFoundException("Categoria no encontrada");
+        // combia el estado
+        categoria.IdEstado = 2;
+        _context.Categoria.Update(categoria);
         await _context.SaveChangesAsync();
         return categoria;
     }

@@ -52,11 +52,22 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteCategoria(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SupimirCategoria(int Id)
         {
-            await _categoriaService.DeleteCategoria(id);
-            return NoContent();
+            try
+            {
+                var categoria = await _categoriaService.SuprimirCategoriaAsync(Id);
+                if (categoria == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }
