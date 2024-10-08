@@ -9,5 +9,5 @@ public interface IUsuarioService
     Task<Usuario> GetUsuarioById(int Id);
     Task<Usuario> CreateUsuario(Usuario usuario);
     Task<Usuario> UpdateUsuario(Usuario usuario, int Id);
-    Task<Usuario> DeleteUsuario(int Id);
+    Task<Usuario> SuprimirUsuarioAsync(int Id);
 }

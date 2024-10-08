@@ -53,13 +53,24 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRol(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirRol(int Id)
         {
-            await _rolservice.DeleteRol(id);
-            return NoContent();
-        }
+            try
+            {
+                var rol = await _rolservice.SuprimirRolAsync(Id);
+                if (rol == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
 
+        }
     }
 }
 

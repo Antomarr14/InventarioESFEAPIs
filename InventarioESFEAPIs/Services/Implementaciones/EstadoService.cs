@@ -23,11 +23,14 @@ namespace InventarioESFEAPIs.Services.Implementaciones
 
         }
 
-        public  async Task<Estado> DeleteEstado(int Id)
+        public async Task<Estado> SuprimirEstadoAsync(int Id)
         {
             var estado = await _context.Estado.FirstOrDefaultAsync(e => e.Id == Id);
-            if (estado == null) throw new KeyNotFoundException("Estado no encontrado");
-            _context.Estado.Remove(estado);
+            if (estado == null)
+                throw new KeyNotFoundException("estado no encontrada");
+            // combia el estado
+            estado.Id = 2;
+            _context.Estado.Update(estado);
             await _context.SaveChangesAsync();
             return estado;
         }

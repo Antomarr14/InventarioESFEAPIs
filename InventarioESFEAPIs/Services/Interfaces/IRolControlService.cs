@@ -8,6 +8,6 @@ namespace InventarioESFEAPIs.Services.Interfaces
         Task<RolControl> GetRolControlById(int Id);
         Task<RolControl> CreateRolControl(RolControl rolcontrol);
         Task<RolControl> UpdateRolControl(RolControl rolcontrol, int Id);
-        Task<RolControl> DeleteRolControl(int Id);
+        Task<RolControl> SuprimirRolControlAsync(int Id);
     }
 }

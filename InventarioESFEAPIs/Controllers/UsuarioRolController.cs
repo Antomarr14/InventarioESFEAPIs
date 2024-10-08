@@ -1,4 +1,5 @@
 ﻿using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +10,10 @@ namespace InventarioESFEAPIs.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-   
+
     public class UsuarioRolController : ControllerBase
     {
-        private readonly IUsuarioRolService  _usuariorol;
+        private readonly IUsuarioRolService _usuariorol;
 
         public UsuarioRolController(IUsuarioRolService usuariorolservice)
         {
@@ -52,13 +53,23 @@ namespace InventarioESFEAPIs.Controllers
             await _usuariorol.UpdateUsuarioRol(usuariorol, id);
             return NoContent();
         }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuarioRol(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirUsuaerioRol(int Id)
         {
-            await _usuariorol.DeleteUsuarioRol(id);
-            return NoContent();
-        }
+            try
+            {
+                var usuariorol = await _usuariorol.SuprimirUsuarioRolAsync(Id);
+                if (usuariorol == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
 
+        }
     }
 }

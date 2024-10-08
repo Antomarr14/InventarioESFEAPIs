@@ -24,11 +24,14 @@ namespace InventarioESFEAPIs.Services.Implementaciones
             return prestamo;
         }
 
-        public async Task<Prestamo> DeletePrestamo(int id)
+        public async Task<Prestamo> SuprimirPrestamoAsync(int Id)
         {
-            var prestamo = await _context.Prestamo.FirstOrDefaultAsync(p => p.Id == id);
-            if (prestamo == null) throw new KeyNotFoundException("Préstamo no encontrado");
-            _context.Prestamo.Remove(prestamo);
+            var prestamo = await _context.Prestamo.FirstOrDefaultAsync(p => p.Id == Id);
+            if (prestamo == null)
+                throw new KeyNotFoundException("prestamo no encontrada");
+            // combia el estado
+            prestamo.IdEstado = 2;
+            _context.Prestamo.Update(prestamo);
             await _context.SaveChangesAsync();
             return prestamo;
         }

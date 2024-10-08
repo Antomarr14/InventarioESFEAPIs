@@ -1,4 +1,5 @@
 using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,16 +39,16 @@ namespace InventarioESFEAPIs.Controllers
             return Ok(usuario);
         }
 
-[HttpPost]
-public async Task<ActionResult<Usuario>> CreateUsuario([FromBody] Usuario usuario)
-{
-    // Si el usuario tiene un ID especificado, lo ignoramos
-    usuario.Id = 0; // Reseteamos el ID a 0 para asegurarnos de que no se use
+        [HttpPost]
+        public async Task<ActionResult<Usuario>> CreateUsuario([FromBody] Usuario usuario)
+        {
+            // Si el usuario tiene un ID especificado, lo ignoramos
+            usuario.Id = 0; // Reseteamos el ID a 0 para asegurarnos de que no se use
 
-    // Crea el nuevo usuario
-    var usuarioCreado = await _usuarioService.CreateUsuario(usuario);
-    return CreatedAtAction(nameof(GetUsuario), new { id = usuarioCreado.Id }, usuarioCreado);
-}
+            // Crea el nuevo usuario
+            var usuarioCreado = await _usuarioService.CreateUsuario(usuario);
+            return CreatedAtAction(nameof(GetUsuario), new { id = usuarioCreado.Id }, usuarioCreado);
+        }
 
 
         [HttpPut("{id}")]
@@ -57,11 +58,22 @@ public async Task<ActionResult<Usuario>> CreateUsuario([FromBody] Usuario usuari
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirUsuario(int Id)
         {
-            await _usuarioService.DeleteUsuario(id);
-            return NoContent();
+            try
+            {
+                var usuario = await _usuarioService.SuprimirUsuarioAsync(Id);
+                if (usuario == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }

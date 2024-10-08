@@ -81,13 +81,16 @@ public class CompraService : ICompraService
         }
     }
 
-    public async Task<Compra> DeleteCompra(int Id)
+    public async Task<Compra> SuprimirCompraAsync(int Id)
     {
-    var compra = await _context.Compra.FirstOrDefaultAsync(u => u.Id == Id);
-    if(compra == null) throw new KeyNotFoundException("Compra no encontrado");
-    _context.Compra.Remove(compra);
-    await _context.SaveChangesAsync();
-    return compra;
+        var compra = await _context.Compra.FirstOrDefaultAsync(c => c.Id == Id);
+        if (compra == null)
+            throw new KeyNotFoundException("Compra no encontrada");
+        // combia el estado
+        compra.IdEstado = 2;
+        _context.Compra.Update(compra);
+        await _context.SaveChangesAsync();
+        return compra;
     }
 
     public async Task<Compra> GetCompraById(int Id)
@@ -116,4 +119,6 @@ public class CompraService : ICompraService
         await _context.SaveChangesAsync();
         return CompraExistente;
     }
+
+    
 }

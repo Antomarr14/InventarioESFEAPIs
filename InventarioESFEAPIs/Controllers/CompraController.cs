@@ -1,5 +1,6 @@
 using InventarioESFEAPIs.DTO;
 using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +10,7 @@ namespace InventarioESFEAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] 
+    [Authorize]
     public class CompraController : ControllerBase
     {
         private readonly ICompraService _compraService;
@@ -38,7 +39,7 @@ namespace InventarioESFEAPIs.Controllers
         }
 
         [HttpPost]
-                public async Task<IActionResult> CreateCompra([FromBody] CompraDTO compraDTO)
+        public async Task<IActionResult> CreateCompra([FromBody] CompraDTO compraDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -52,15 +53,26 @@ namespace InventarioESFEAPIs.Controllers
             }
             catch (Exception ex)
             {
-            return StatusCode(500, new { Message = "Ocurrió un error al registrar la compra.", Details = ex.Message });
+                return StatusCode(500, new { Message = "Ocurrió un error al registrar la compra.", Details = ex.Message });
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Deletecompra(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SupimirCompra(int Id)
         {
-            await _compraService.DeleteCompra(id);
-            return NoContent();
+            try
+            {
+                var compra = await _compraService.SuprimirCompraAsync(Id);
+                if (compra == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }

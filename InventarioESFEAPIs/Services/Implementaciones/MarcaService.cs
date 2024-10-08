@@ -20,11 +20,14 @@ namespace InventarioESFEAPIs.Services.Implementaciones
             return marca;
         }
 
-        public  async Task<Marca> DeleteMarca(int Id)
+        public async Task<Marca> SuprimirMarcaAsync(int Id)
         {
             var marca = await _context.Marca.FirstOrDefaultAsync(m => m.Id == Id);
-            if (marca == null) throw new KeyNotFoundException("marca no encontrada");
-            _context.Marca.Remove(marca);
+            if (marca == null)
+                throw new KeyNotFoundException("marca no encontrada");
+            // combia el estado
+            marca.IdEstado = 2;
+            _context.Marca.Update(marca);
             await _context.SaveChangesAsync();
             return marca;
         }

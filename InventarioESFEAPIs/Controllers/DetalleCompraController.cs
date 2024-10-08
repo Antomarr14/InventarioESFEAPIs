@@ -1,4 +1,5 @@
 using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -53,11 +54,22 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletedetalleCompra(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirDetalleCompra(int Id)
         {
-            await _detalleCompraService.DeleteDetalleCompra(id);
-            return NoContent();
+            try
+            {
+                var detallecompra = await _detalleCompraService.SuprimirDetalleCompraAsync(Id);
+                if (detallecompra == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }

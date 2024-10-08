@@ -21,11 +21,14 @@ private readonly InventarioESFEContext _context;
         return ubicacion;
     }
 
-    public async Task<Ubicacion> DeleteUbicacion(int Id)
+    public async Task<Ubicacion> SuprimirUbicacionAsync(int Id)
     {
-        var ubicacion = await _context.Ubicacion.FirstOrDefaultAsync(c => c.Id == Id);
-        if (ubicacion == null) throw new KeyNotFoundException("Ubicacion no encontrada");
-        _context.Ubicacion.Remove(ubicacion);
+        var ubicacion = await _context.Ubicacion.FirstOrDefaultAsync(u => u.Id == Id);
+        if (ubicacion == null)
+            throw new KeyNotFoundException("ubicacion no encontrada");
+        // combia el estado
+        ubicacion.IdEstado = 2;
+        _context.Ubicacion.Update(ubicacion);
         await _context.SaveChangesAsync();
         return ubicacion;
     }

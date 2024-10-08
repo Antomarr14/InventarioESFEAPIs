@@ -22,13 +22,16 @@ public async Task<Usuario> CreateUsuario(Usuario usuario)
 }
 
 
-    public async Task<Usuario> DeleteUsuario(int Id)
+    public async Task<Usuario> SuprimirUsuarioAsync(int Id)
     {
-        var usuario = await _context.Usuario.FirstOrDefaultAsync(u => u.Id == Id);
-        if(usuario == null) throw new KeyNotFoundException("Usuario no encontrado");
-        _context.Usuario.Remove(usuario);
+        var usuaio = await _context.Usuario.FirstOrDefaultAsync(u => u.Id == Id);
+        if (usuaio == null)
+            throw new KeyNotFoundException("usuario no encontrada");
+        // combia el estado
+        usuaio.IdEstado = 2;
+        _context.Usuario.Update(usuaio);
         await _context.SaveChangesAsync();
-        return usuario;
+        return usuaio;
     }
 
     public async Task<Usuario> GetUsuarioById(int Id)

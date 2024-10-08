@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using InventarioESFEAPIs.Services.Implementaciones;
 
 namespace InventarioESFEAPIs.Controllers
 {
@@ -122,20 +123,22 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Prestamo/{id}
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePrestamo(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirPrestamo(int Id)
         {
             try
             {
-                await _prestamoService.DeletePrestamo(id);
+                var prestamo = await _prestamoService.SuprimirPrestamoAsync(Id);
+                if (prestamo == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException knfEx)
             {
-                return NotFound();
+                return NotFound(knfEx.Message);
             }
-
-            return NoContent();
         }
     }
 }

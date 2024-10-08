@@ -22,13 +22,16 @@ private readonly InventarioESFEContext _context;
         return detalleCompra;
     }
 
-    public async Task<DetalleCompra> DeleteDetalleCompra(int Id)
+    public async Task<DetalleCompra> SuprimirDetalleCompraAsync(int Id)
     {
-    var detalleCompra = await _context.DetalleCompra.FirstOrDefaultAsync(u => u.Id == Id);
-    if(detalleCompra == null) throw new KeyNotFoundException("Detalle Compra no encontrado");
-    _context.DetalleCompra.Remove(detalleCompra);
-    await _context.SaveChangesAsync();
-    return detalleCompra;
+        var detallecompra = await _context.DetalleCompra.FirstOrDefaultAsync(d => d.Id == Id);
+        if (detallecompra == null)
+            throw new KeyNotFoundException("detallecompra no encontrada");
+        // combia el estado
+        detallecompra.IdEstado = 2;
+        _context.DetalleCompra.Update(detallecompra);
+        await _context.SaveChangesAsync();
+        return detallecompra;
     }
 
     public async Task<DetalleCompra> GetDetalleCompraById(int Id)

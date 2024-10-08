@@ -9,5 +9,5 @@ public interface IProveedorService
     Task<Proveedor> GetProveedorById(int Id);
     Task<Proveedor> CreateProveedor(Proveedor proveedor);
     Task<Proveedor> UpdateProveedor(Proveedor proveedor, int Id);
-    Task<Proveedor> DeleteProveedor(int Id);
+    Task<Proveedor> SuprimirProveedorAsync(int Id);
 }

@@ -20,11 +20,14 @@ namespace InventarioESFEAPIs.Services.Implementaciones
             return usuariorol;
         }
 
-        public async Task<UsuarioRol> DeleteUsuarioRol(int Id)
+        public async Task<UsuarioRol> SuprimirUsuarioRolAsync(int Id)
         {
-            var usuariorol = await _context.UsuarioRol.FirstOrDefaultAsync(u => u.Id == Id);
-            if (usuariorol == null) throw new KeyNotFoundException("Usuariorol no encontrado");
-            _context.UsuarioRol.Remove(usuariorol);
+            var usuariorol = await _context.UsuarioRol.FirstOrDefaultAsync(r => r.Id == Id);
+            if (usuariorol == null)
+                throw new KeyNotFoundException("usuariorol no encontrada");
+            // combia el estado
+            usuariorol.IdEstado = 2;
+            _context.UsuarioRol.Update(usuariorol);
             await _context.SaveChangesAsync();
             return usuariorol;
         }

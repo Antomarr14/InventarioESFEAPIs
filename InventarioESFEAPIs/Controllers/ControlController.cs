@@ -1,4 +1,5 @@
 ﻿using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -52,12 +53,23 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteControl(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SupimirControl(int Id)
         {
-            await _controlservice.DeleteControl(id);
-            return NoContent();
-        }
+            try
+            {
+                var control = await _controlservice.SuprimirControlAsync(Id);
+                if (control == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
 
+        }
     }
 }

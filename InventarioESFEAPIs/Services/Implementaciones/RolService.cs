@@ -23,11 +23,14 @@ namespace InventarioESFEAPIs.Services.Implementaciones
 
         }
 
-        public async Task<Rol> DeleteRol(int Id)
+        public async Task<Rol> SuprimirRolAsync(int Id)
         {
             var rol = await _context.Rol.FirstOrDefaultAsync(r => r.Id == Id);
-            if (rol == null) throw new KeyNotFoundException("Rol no encontrado");
-            _context.Rol.Remove(rol);
+            if (rol == null)
+                throw new KeyNotFoundException("rol no encontrada");
+            // combia el estado
+            rol.IdEstado = 2;
+            _context.Rol.Update(rol);
             await _context.SaveChangesAsync();
             return rol;
         }

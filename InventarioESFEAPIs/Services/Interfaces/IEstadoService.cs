@@ -8,6 +8,6 @@ namespace InventarioESFEAPIs.Services.Interfaces
         Task<Estado> GetEstadoById(int Id);
         Task<Estado> CreateEstado(Estado estado);
         Task<Estado> UpdateEstado(Estado estado, int Id);
-        Task<Estado> DeleteEstado(int Id);
+        Task<Estado> SuprimirEstadoAsync(int Id);
     }
 }

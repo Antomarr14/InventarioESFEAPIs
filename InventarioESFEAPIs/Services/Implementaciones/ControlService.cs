@@ -21,11 +21,14 @@ namespace InventarioESFEAPIs.Services.Implementaciones
             return control;
         }
 
-        public  async Task<Control> DeleteControl(int Id)
+        public async Task<Control> SuprimirControlAsync(int Id)
         {
             var control = await _context.Control.FirstOrDefaultAsync(c => c.Id == Id);
-            if (control == null) throw new KeyNotFoundException("Control no encontrado");
-            _context.Control.Remove(control);
+            if (control == null)
+                throw new KeyNotFoundException("Control no encontrada");
+            // combia el estado
+            control.IdEstado = 2;
+            _context.Control.Update(control);
             await _context.SaveChangesAsync();
             return control;
         }

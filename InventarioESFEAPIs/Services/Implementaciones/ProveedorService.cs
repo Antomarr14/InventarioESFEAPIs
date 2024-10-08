@@ -21,13 +21,16 @@ public class ProveedorService : IProveedorService
         return proveedor;
     }
 
-    public async Task<Proveedor> DeleteProveedor(int Id)
+    public async Task<Proveedor> SuprimirProveedorAsync(int Id)
     {
-    var proveedor = await _context.Proveedor.FirstOrDefaultAsync(u => u.Id == Id);
-    if(proveedor == null) throw new KeyNotFoundException("Proveedor no encontrado");
-    _context.Proveedor.Remove(proveedor);
-    await _context.SaveChangesAsync();
-    return proveedor;
+        var proveedor = await _context.Proveedor.FirstOrDefaultAsync(p => p.Id == Id);
+        if (proveedor == null)
+            throw new KeyNotFoundException("proveedor no encontrada");
+        // combia el estado
+        proveedor.IdEstado = 2;
+        _context.Proveedor.Update(proveedor);
+        await _context.SaveChangesAsync();
+        return proveedor;
     }
 
     public async Task<Proveedor> GetProveedorById(int Id)

@@ -9,5 +9,5 @@ public interface IPerdidasService
         Task<Perdidas> GetPerdidaById(int id);
         Task<Perdidas> CreatePerdida(Perdidas perdida);
         Task UpdatePerdida(Perdidas perdida, int id);
-        Task DeletePerdida(int id);
+        Task<Perdidas> SuprimirPerdidasAsync(int Id);
 }

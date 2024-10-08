@@ -1,4 +1,5 @@
 ﻿using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -52,11 +53,22 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRolControl(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirRolContol(int Id)
         {
-            await _rolcontrolservice.DeleteRolControl(id);
-            return NoContent();
+            try
+            {
+                var rolcontrol = await _rolcontrolservice.SuprimirRolControlAsync(Id);
+                if (rolcontrol == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }

@@ -44,16 +44,16 @@ namespace InventarioESFEAPIs.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeletePerdida(int id)
+        public async Task<Perdidas> SuprimirPerdidasAsync(int Id)
         {
-            var perdida = await _context.Perdidas.FindAsync(id);
-            if (perdida == null)
-            {
-                throw new KeyNotFoundException("Pérdida no encontrada.");
-            }
-
-            _context.Perdidas.Remove(perdida);
+            var perdidas = await _context.Perdidas.FirstOrDefaultAsync(p => p.Id == Id);
+            if (perdidas == null)
+                throw new KeyNotFoundException("detallecompra no encontrada");
+            // combia el estado
+            perdidas.Id = 2;
+            _context.Perdidas.Update(perdidas);
             await _context.SaveChangesAsync();
+            return perdidas;
         }
     }
 }

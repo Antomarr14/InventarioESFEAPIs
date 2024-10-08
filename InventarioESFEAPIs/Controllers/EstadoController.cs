@@ -53,12 +53,23 @@ namespace InventarioESFEAPIs.Controllers
         }
 
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEstado(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirEstado(int Id)
         {
-            await _estadoservice.DeleteEstado(id);
-            return NoContent();
-        }
+            try
+            {
+                var estado = await _estadoservice.SuprimirEstadoAsync(Id);
+                if (estado == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
 
+        }
     }
 }

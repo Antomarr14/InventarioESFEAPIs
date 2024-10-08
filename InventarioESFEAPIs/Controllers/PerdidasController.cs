@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using InventarioESFEAPIs.Services.Implementaciones;
 
 namespace InventarioESFEAPIs.Controllers
 {
@@ -110,19 +111,22 @@ namespace InventarioESFEAPIs.Controllers
         }
 
         // DELETE: api/Perdida/{id}
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePerdida(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirPerdida(int Id)
         {
             try
             {
-                await _perdidasService.DeletePerdida(id);
+                var perdida = await _perdidasService.SuprimirPerdidasAsync(Id);
+                if (perdida == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException knfEx)
             {
-                return NotFound("Pérdida no encontrada.");
+                return NotFound(knfEx.Message);
             }
-
-            return NoContent();
         }
     }
 }

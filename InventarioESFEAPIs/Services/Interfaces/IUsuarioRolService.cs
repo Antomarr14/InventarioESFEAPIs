@@ -8,6 +8,6 @@ namespace InventarioESFEAPIs.Services.Interfaces
         Task<UsuarioRol> GetUsuarioRolById(int Id);
         Task<UsuarioRol> CreateUsuarioRol(UsuarioRol usuariorol);
         Task<UsuarioRol> UpdateUsuarioRol(UsuarioRol usuariorol, int Id);
-        Task<UsuarioRol> DeleteUsuarioRol(int Id);
+        Task<UsuarioRol> SuprimirUsuarioRolAsync(int Id);
     }
 }

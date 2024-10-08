@@ -12,6 +12,6 @@ namespace InventarioESFEAPIs.Services.Interfaces
         Task<Articulo> GetArticuloById(int Id);
         Task<Articulo> CreateArticulo(Articulo articulo);
         Task<Articulo> UpdateArticulo(Articulo articulo, int Id);
-        Task<Articulo> DeleteArticulo(int Id);
+        Task<Articulo> SuprimirArticuloAsync(int Id);
     }
 }

@@ -10,5 +10,5 @@ public interface IPrestamoService
         Task<Prestamo> GetPrestamoById(int Id);
         Task<Prestamo> CreatePrestamo(Prestamo prestamo);
         Task<Prestamo> UpdatePrestamo(Prestamo prestamo, int Id);
-        Task<Prestamo> DeletePrestamo(int Id);
+        Task<Prestamo> SuprimirPrestamoAsync(int Id);
 }

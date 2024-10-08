@@ -1,4 +1,5 @@
 using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ namespace InventarioESFEAPIs.Controllers
     [Authorize]
     public class UbicacionController : ControllerBase
     {
-     private readonly IUbicacionService _UbicacionService;
+        private readonly IUbicacionService _UbicacionService;
 
         public UbicacionController(IUbicacionService ubicacionService)
         {
@@ -29,7 +30,7 @@ namespace InventarioESFEAPIs.Controllers
         public async Task<ActionResult> GetUbicacion(int Id)
         {
             var ubicacion = await _UbicacionService.GetUbicacionById(Id);
-            if(ubicacion == null)
+            if (ubicacion == null)
             {
                 return NotFound();
             }
@@ -42,7 +43,7 @@ namespace InventarioESFEAPIs.Controllers
             ubicacion.Id = 0;
 
             var UbicacionCreada = await _UbicacionService.CreateUbicacion(ubicacion);
-            return CreatedAtAction(nameof(GetUbicacion), new { id = UbicacionCreada.Id}, UbicacionCreada);
+            return CreatedAtAction(nameof(GetUbicacion), new { id = UbicacionCreada.Id }, UbicacionCreada);
         }
 
         [HttpPut("{Id}")]
@@ -51,12 +52,22 @@ namespace InventarioESFEAPIs.Controllers
             await _UbicacionService.UpdateUbicacion(ubicacion, Id);
             return NoContent();
         }
-
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteUbicacion(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirUbicacion(int Id)
         {
-            await _UbicacionService.DeleteUbicacion(id);
-            return NoContent();
+            try
+            {
+                var ubicacion = await _UbicacionService.SuprimirUbicacionAsync(Id);
+                if (ubicacion == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }

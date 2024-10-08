@@ -9,5 +9,5 @@ public interface IUbicacionService
     Task<Ubicacion> GetUbicacionById(int Id);
     Task<Ubicacion> CreateUbicacion(Ubicacion ubicacion);
     Task<Ubicacion> UpdateUbicacion(Ubicacion ubicacion, int Id);
-    Task<Ubicacion> DeleteUbicacion(int Id);
+    Task<Ubicacion> SuprimirUbicacionAsync(int Id);
 }

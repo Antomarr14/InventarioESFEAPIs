@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -93,11 +94,22 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArticulo(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirArticulo(int Id)
         {
-            await _articuloService.DeleteArticulo(id);
-            return NoContent();
+            try
+            {
+                var articulo = await _articuloService.SuprimirArticuloAsync(Id);
+                if (articulo == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }

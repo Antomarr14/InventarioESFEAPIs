@@ -1,4 +1,5 @@
 using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ namespace InventarioESFEAPIs.Controllers
     [Authorize]
     public class TipoController : ControllerBase
     {
-    private readonly ITipoService _tipoService;
+        private readonly ITipoService _tipoService;
 
         public TipoController(ITipoService tipoService)
         {
@@ -29,7 +30,7 @@ namespace InventarioESFEAPIs.Controllers
         public async Task<ActionResult> GetTipo(int Id)
         {
             var tipo = await _tipoService.GetTipoById(Id);
-            if(tipo == null)
+            if (tipo == null)
             {
                 return NotFound();
             }
@@ -42,7 +43,7 @@ namespace InventarioESFEAPIs.Controllers
             tipo.Id = 0;
 
             var tipoCreada = await _tipoService.CreateTipo(tipo);
-            return CreatedAtAction(nameof(GetTipo), new { id = tipoCreada.Id}, tipoCreada);
+            return CreatedAtAction(nameof(GetTipo), new { id = tipoCreada.Id }, tipoCreada);
         }
 
         [HttpPut("{Id}")]
@@ -52,11 +53,22 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteTipo(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirTipo(int Id)
         {
-            await _tipoService.DeleteTipo(id);
-            return NoContent();
+            try
+            {
+                var tipo = await _tipoService.SuprimirTipoAsync(Id);
+                if (tipo == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }

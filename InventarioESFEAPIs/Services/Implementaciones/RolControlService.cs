@@ -20,11 +20,14 @@ namespace InventarioESFEAPIs.Services.Implementaciones
             return rolcontrol;
         }
 
-        public async Task<RolControl> DeleteRolControl(int Id)
+        public async Task<RolControl> SuprimirRolControlAsync(int Id)
         {
             var rolcontrol = await _context.RolControl.FirstOrDefaultAsync(r => r.Id == Id);
-            if (rolcontrol == null) throw new KeyNotFoundException("Rolcontrol no encontrado");
-            _context.RolControl.Remove(rolcontrol);
+            if (rolcontrol == null)
+                throw new KeyNotFoundException("rolcontrol no encontrada");
+            // combia el estado
+            rolcontrol.IdEstado = 2;
+            _context.RolControl.Update(rolcontrol);
             await _context.SaveChangesAsync();
             return rolcontrol;
         }

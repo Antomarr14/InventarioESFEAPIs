@@ -22,11 +22,14 @@ private readonly InventarioESFEContext _context;
         return tipo;
     }
 
-    public async Task<Tipo> DeleteTipo(int Id)
+    public async Task<Tipo> SuprimirTipoAsync(int Id)
     {
         var tipo = await _context.Tipo.FirstOrDefaultAsync(t => t.Id == Id);
-        if (tipo == null) throw new KeyNotFoundException("Tipo no encontrada");
-        _context.Tipo.Remove(tipo);
+        if (tipo == null)
+            throw new KeyNotFoundException("tipo no encontrada");
+        // combia el estado
+        tipo.IdEstado = 2;
+        _context.Tipo.Update(tipo);
         await _context.SaveChangesAsync();
         return tipo;
     }

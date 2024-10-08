@@ -10,5 +10,5 @@ public interface ICompraService
     Task<Compra> GetCompraById(int Id);
     Task CreateCompraAsync(CompraDTO compraDTO);
     Task<Compra> UpdateCompra(Compra compra, int Id);
-    Task<Compra> DeleteCompra(int Id);
+    Task<Compra> SuprimirCompraAsync(int Id);
 }

@@ -22,16 +22,19 @@ public class ArticuloServicde : IArticuloService
             return articulo;
         }
 
-        public async Task<Articulo> DeleteArticulo(int Id)
-        {
-            var articulo = await _context.Articulo.FirstOrDefaultAsync(a => a.Id == Id);
-            if (articulo == null) throw new KeyNotFoundException("Artículo no encontrado");
-            _context.Articulo.Remove(articulo);
-            await _context.SaveChangesAsync();
-            return articulo;
-        }
+    public async Task<Articulo> SuprimirArticuloAsync(int Id)
+    {
+        var articulo = await _context.Articulo.FirstOrDefaultAsync(a => a.Id == Id);
+        if (articulo == null)
+            throw new KeyNotFoundException("articulo no encontrada");
+        // combia el estado
+        articulo.IdEstado = 2;
+        _context.Articulo.Update(articulo);
+        await _context.SaveChangesAsync();
+        return articulo;
+    }
 
-        public async Task<Articulo> GetArticuloById(int Id)
+    public async Task<Articulo> GetArticuloById(int Id)
         {
             return await _context.Articulo.FindAsync(Id);
         }

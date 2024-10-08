@@ -1,4 +1,5 @@
 using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -8,7 +9,7 @@ namespace InventarioESFEAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] 
+    [Authorize]
     public class ProveedorController : ControllerBase
     {
         private readonly IProveedorService _proveedorService;
@@ -36,15 +37,15 @@ namespace InventarioESFEAPIs.Controllers
             return Ok(proveedor);
         }
 
-    [HttpPost]
-    public async Task<ActionResult<Proveedor>> CreateProveedor([FromBody] Proveedor proveedor)
-    {
-        // Si el proveedor tiene un ID especificado, lo ignoramos
-        proveedor.Id = 0; // Reseteamos el ID a 0 para asegurarnos de que no se use
+        [HttpPost]
+        public async Task<ActionResult<Proveedor>> CreateProveedor([FromBody] Proveedor proveedor)
+        {
+            // Si el proveedor tiene un ID especificado, lo ignoramos
+            proveedor.Id = 0; // Reseteamos el ID a 0 para asegurarnos de que no se use
 
-        var proveedorCreado = await _proveedorService.CreateProveedor(proveedor);
-        return CreatedAtAction(nameof(GetProveedor), new { id = proveedorCreado.Id }, proveedorCreado);
-    }
+            var proveedorCreado = await _proveedorService.CreateProveedor(proveedor);
+            return CreatedAtAction(nameof(GetProveedor), new { id = proveedorCreado.Id }, proveedorCreado);
+        }
 
 
         [HttpPut("{id}")]
@@ -54,11 +55,22 @@ namespace InventarioESFEAPIs.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProveedor(int id)
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> SuprimirProveedor(int Id)
         {
-            await _proveedorService.DeleteProveedor(id);
-            return NoContent();
+            try
+            {
+                var proveedor = await _proveedorService.SuprimirProveedorAsync(Id);
+                if (proveedor == null)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
         }
     }
 }
