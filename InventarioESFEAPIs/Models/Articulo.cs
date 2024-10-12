@@ -21,4 +21,8 @@ public class Articulo
     public int IdUsuario {get; set;}
     public int IdEstado {get; set;}
     public int IdTipo {get; set;}
+        public ICollection<AsignacionCodigo> AsignacionCodigos { get; set; }
+        public ICollection<Prestamo> Prestamos { get; set; }
+        public ICollection<DetalleCompra> DetalleCompras { get; set; }
+        public ICollection<Perdidas> Perdidas { get; set; }
 }

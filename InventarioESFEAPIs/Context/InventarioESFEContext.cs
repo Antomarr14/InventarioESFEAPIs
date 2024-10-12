@@ -27,12 +27,27 @@ namespace InventarioESFEAPIs.Context
         public DbSet<Ubicacion> Ubicacion { get; set; }
         public DbSet<RolControl> RolControl { get; set; }
         public DbSet<Marca> Marca { get; set; }
+        public DbSet<Imagen> Imagen { get; set; }
+        public DbSet<AsignacionCodigo> AsignacionCodigo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>()
                 .Property(u => u.Id)
                 .ValueGeneratedOnAdd();  
+                base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Imagen>()
+                .HasOne(i => i.AsignacionCodigo)
+                .WithMany(a => a.Imagenes)
+                .HasForeignKey(i => i.IdAsignacionCodigo)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<AsignacionCodigo>()
+                .HasOne(a => a.Articulo)
+                .WithMany(a => a.AsignacionCodigos)
+                .HasForeignKey(a => a.IdArticulo)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
