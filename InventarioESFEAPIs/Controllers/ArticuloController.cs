@@ -1,17 +1,17 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using InventarioESFEAPIs.Models;
+using InventarioESFEAPIs.Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using InventarioESFEAPIs.Models;
-using InventarioESFEAPIs.Services.Implementaciones;
-using InventarioESFEAPIs.Services.Interfaces;
+using InventarioESFEAPIs.DTO;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace InventarioESFEAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] 
+    [Authorize]
     public class ArticuloController : ControllerBase
     {
         private readonly IArticuloService _articuloService;
@@ -21,15 +21,17 @@ namespace InventarioESFEAPIs.Controllers
             _articuloService = articuloService;
         }
 
+        // GET: api/articulo
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Articulo>>> GetArticulos()
+        public async Task<ActionResult<IEnumerable<ArticuloDTO>>> GetArticulos()
         {
             var articulos = await _articuloService.GetArticulos();
             return Ok(articulos);
         }
 
+        // GET: api/articulo/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetArticulo(int id)
+        public async Task<ActionResult<ArticuloDTO>> GetArticulo(int id)
         {
             var articulo = await _articuloService.GetArticuloById(id);
             if (articulo == null)
@@ -39,77 +41,54 @@ namespace InventarioESFEAPIs.Controllers
             return Ok(articulo);
         }
 
+        // POST: api/articulo
         [HttpPost]
-        public async Task<ActionResult<Articulo>> CreateArticulo([FromBody] Articulo articulo)
+        public async Task<ActionResult<ArticuloDTO>> CreateArticulo([FromBody] ArticuloDTO articuloDto)
         {
-            // Validar stock mínimo
-            if (articulo.StockMinima < 5)
+            if (articuloDto == null)
             {
-                return BadRequest("El stock mínimo no puede ser menor que 5.");
+                return BadRequest();
             }
 
-            // Validar stock
-            if (articulo.Stock < 5 || articulo.Stock > 50)
-            {
-                return BadRequest("El stock debe estar entre 5 y 50.");
-            }
-
-            // Validar disponibilidad
-            // Aquí se cambia la validación para aceptar bool
-            if (articulo.Disponibilidad != true && articulo.Disponibilidad != false)
-            {
-                return BadRequest("La disponibilidad debe ser verdadero (true) o falso (false).");
-            }
-
-            // Reseteamos el ID a 0 para asegurarnos de que no se use
-            articulo.Id = 0; 
-
-            var articuloCreado = await _articuloService.CreateArticulo(articulo);
-            return CreatedAtAction(nameof(GetArticulo), new { id = articuloCreado.Id }, articuloCreado);
+            var nuevoArticulo = await _articuloService.CreateArticulo(articuloDto);
+            return CreatedAtAction(nameof(GetArticulo), new { id = nuevoArticulo.Id }, nuevoArticulo);
         }
 
+        // PUT: api/articulo/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateArticulo(int id, [FromBody] Articulo articulo)
+        public async Task<IActionResult> UpdateArticulo(int id, [FromBody] ArticuloDTO articuloDto)
         {
-            // Validar stock mínimo
-            if (articulo.StockMinima < 5)
+            if (id != articuloDto.Id)
             {
-                return BadRequest("El stock mínimo no puede ser menor que 5.");
+                return BadRequest();
             }
 
-            // Validar stock
-            if (articulo.Stock < 5 || articulo.Stock > 50)
-            {
-                return BadRequest("El stock debe estar entre 5 y 50.");
-            }
-
-            // Validar disponibilidad
-            // Aquí se cambia la validación para aceptar bool
-            if (articulo.Disponibilidad != true && articulo.Disponibilidad != false)
-            {
-                return BadRequest("La disponibilidad debe ser verdadero (true) o falso (false).");
-            }
-
-            await _articuloService.UpdateArticulo(articulo, id);
-            return NoContent();
-        }
-
-        [HttpPatch("{Id}")]
-        public async Task<IActionResult> SuprimirArticulo(int Id)
-        {
             try
             {
-                var articulo = await _articuloService.SuprimirArticuloAsync(Id);
-                if (articulo == null)
+                await _articuloService.UpdateArticulo(articuloDto, id);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (await _articuloService.GetArticuloById(id) == null)
                 {
                     return NotFound();
                 }
-                return Ok();
+                throw; // Re-lanzar la excepción
             }
-            catch (KeyNotFoundException knfEx)
+
+            return NoContent();
+        }
+
+        // DELETE: api/articulo/{id}
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ArticuloDTO>> SuprimirArticulo(int id)
+        {
+            var articuloEliminado = await _articuloService.SuprimirArticuloAsync(id);
+            if (articuloEliminado == null)
             {
-                return NotFound(knfEx.Message);
+                return NotFound();
             }
+            return Ok(articuloEliminado);
         }
     }
 }

@@ -1,17 +1,16 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using InventarioESFEAPIs.DTO;
 using InventarioESFEAPIs.Models;
 
 namespace InventarioESFEAPIs.Services.Interfaces
 {
     public interface IArticuloService
     {
-        Task<IEnumerable<Articulo>> GetArticulos();
-
-        Task<Articulo> GetArticuloById(int Id);
-        Task<Articulo> CreateArticulo(Articulo articulo);
-        Task<Articulo> UpdateArticulo(Articulo articulo, int Id);
-        Task<Articulo> SuprimirArticuloAsync(int Id);
+        Task<IEnumerable<ArticuloDTO>> GetArticulos();
+        Task<ArticuloDTO> GetArticuloById(int id); 
+        Task<ArticuloDTO> CreateArticulo(ArticuloDTO articuloDto); 
+        Task UpdateArticulo(ArticuloDTO articuloDto, int id); 
+        Task<ArticuloDTO> SuprimirArticuloAsync(int id); 
     }
 }

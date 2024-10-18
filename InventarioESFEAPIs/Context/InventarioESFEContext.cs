@@ -43,11 +43,41 @@ namespace InventarioESFEAPIs.Context
                 .HasForeignKey(i => i.IdAsignacionCodigo)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<AsignacionCodigo>()
-                .HasOne(a => a.Articulo)
-                .WithMany(a => a.AsignacionCodigos)
-                .HasForeignKey(a => a.IdArticulo)
-                .OnDelete(DeleteBehavior.Cascade);
+           modelBuilder.Entity<Articulo>()
+    .HasOne(a => a.Marca)
+    .WithMany()
+    .HasForeignKey(a => a.IdMarca)
+    .HasConstraintName("FK_Articulo_Marca"); // Aquí podrías usar el nombre correcto si es necesario.
+
+modelBuilder.Entity<Articulo>()
+    .HasOne(a => a.Categoria)
+    .WithMany()
+    .HasForeignKey(a => a.IdCategoria)
+    .HasConstraintName("FK_Articulo_Categoria");
+
+    modelBuilder.Entity<Articulo>()
+    .HasOne(a => a.Ubicacion)
+    .WithMany()
+    .HasForeignKey(a => a.IdUbicacion)
+    .HasConstraintName("FK_Articulo_Ubicacion");
+
+modelBuilder.Entity<Articulo>()
+    .HasOne(a => a.Usuario)
+    .WithMany(a => a.Articulos)
+    .HasForeignKey(a => a.IdUsuario)
+    .HasConstraintName("FK_Articulo_Usuario");
+
+modelBuilder.Entity<Articulo>()
+    .HasOne(a => a.Estado)
+    .WithMany(a => a.Articulos)
+    .HasForeignKey(a => a.IdEstado)
+    .HasConstraintName("FK_Articulo_Estado");
+
+modelBuilder.Entity<Articulo>()
+    .HasOne(a => a.Tipo)
+    .WithMany()
+    .HasForeignKey(a => a.IdTipo)
+    .HasConstraintName("FK_Articulo_Tipo");
 
             // Configuración de Compra
             modelBuilder.Entity<Compra>()

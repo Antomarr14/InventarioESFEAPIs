@@ -10,5 +10,6 @@ public class Usuario
     public string Telefono { get; set; }
     public int IdEstado {get; set;}
     public int IdRol {get; set;}
+     public ICollection<Articulo> Articulos { get; set; }
     
 }
