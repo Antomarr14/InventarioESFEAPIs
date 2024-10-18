@@ -49,7 +49,6 @@ public class ArticuloServicde : IArticuloService
             var articuloExistente = await _context.Articulo.FirstOrDefaultAsync(a => a.Id == Id);
             if (articuloExistente == null) throw new KeyNotFoundException("Artículo no encontrado");
             
-            articuloExistente.Codigo = articulo.Codigo;
             articuloExistente.Nombre = articulo.Nombre;
             articuloExistente.ContenidoPorEmpaque = articulo.ContenidoPorEmpaque;
             articuloExistente.StockMaxima = articulo.StockMaxima;

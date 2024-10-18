@@ -48,6 +48,32 @@ namespace InventarioESFEAPIs.Context
                 .WithMany(a => a.AsignacionCodigos)
                 .HasForeignKey(a => a.IdArticulo)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Configuración de Compra
+            modelBuilder.Entity<Compra>()
+                .HasOne(c => c.Proveedor)
+                .WithMany()
+                .HasForeignKey(c => c.IdProveedor)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Compra>()
+                .HasOne(c => c.Estado)
+                .WithMany()
+                .HasForeignKey(c => c.IdEstado)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configuración de DetalleCompra
+            modelBuilder.Entity<DetalleCompra>()
+                .HasOne(dc => dc.articulo)
+                .WithMany(p => p.DetalleCompras)
+                .HasForeignKey(dc => dc.IdArticulo)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<DetalleCompra>()
+                .HasOne(dc => dc.Compra)
+                .WithMany(c => c.Detalles)
+                .HasForeignKey(dc => dc.IdCompra)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
