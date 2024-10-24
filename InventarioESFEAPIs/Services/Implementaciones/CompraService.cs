@@ -107,7 +107,7 @@ public class CompraService : ICompraService
         var compra = await _context.Compra.FirstOrDefaultAsync(c => c.Id == Id);
         if (compra == null)
             throw new KeyNotFoundException("Compra no encontrada");
-        compra.IdEstado = 2;
+        compra.IdEstado = 3;
         _context.Compra.Update(compra);
         await _context.SaveChangesAsync();
         return compra;
@@ -115,13 +115,17 @@ public class CompraService : ICompraService
 
     public async Task<Compra> GetCompraById(int Id)
     {
-        return await _context.Compra.FindAsync(Id);
+        return await _context.Compra
+        .Include(c => c.Detalles)     
+        .FirstOrDefaultAsync(c => c.Id == Id);
 
     }
 
     public async Task<IEnumerable<Compra>> GetCompras()
     {
-        return await _context.Compra.ToListAsync();
+        return await _context.Compra
+        .Include(c => c.Detalles)
+        .ToListAsync();
     }
 
     public async Task<Compra> UpdateCompra(Compra compra, int Id)
@@ -139,6 +143,4 @@ public class CompraService : ICompraService
         await _context.SaveChangesAsync();
         return CompraExistente;
     }
-
-    
 }

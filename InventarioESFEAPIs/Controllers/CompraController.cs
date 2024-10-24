@@ -24,6 +24,10 @@ namespace InventarioESFEAPIs.Controllers
         public async Task<ActionResult<IEnumerable<Compra>>> GetCompra()
         {
             var compra = await _compraService.GetCompras();
+                if (compra == null || !compra.Any())
+                {
+                    return NotFound("No se encontraron compras.");
+                }
             return Ok(compra);
         }
 
@@ -33,7 +37,7 @@ namespace InventarioESFEAPIs.Controllers
             var compra = await _compraService.GetCompraById(id);
             if (compra == null)
             {
-                return NotFound();
+                return NotFound("No se encontraron compras.");
             }
             return Ok(compra);
         }

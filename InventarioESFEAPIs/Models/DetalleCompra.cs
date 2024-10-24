@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace InventarioESFEAPIs.Models;
 
@@ -17,7 +18,9 @@ public class DetalleCompra
     [ForeignKey("IdEstado")]
     public int IdEstado { get; set; }
 
+    [JsonIgnore]
     public Articulo articulo {get; set;}
+    [JsonIgnore]
     public Compra Compra {get; set;}
 
 }

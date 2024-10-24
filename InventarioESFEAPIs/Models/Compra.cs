@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace InventarioESFEAPIs.Models;
 
@@ -14,7 +15,9 @@ public class Compra
     public int IdProveedor { get; set; }
     public int IdEstado { get; set; }
 
+    [JsonIgnore]
     public Proveedor Proveedor { get; set; }
+    [JsonIgnore]
     public Estado Estado { get; set; }
     public ICollection<DetalleCompra> Detalles { get; set; } 
 }
