@@ -24,14 +24,24 @@ public class CategoriaService : ICategoriaService
 
     public async Task<Categoria> SuprimirCategoriaAsync(int Id)
     {
-        var categoria = await _context.Categoria.FirstOrDefaultAsync(c => c.Id == Id);
-        if (categoria == null)
+    var categoria = await _context.Categoria.FirstOrDefaultAsync(c => c.Id == Id);
+    
+    if (categoria == null)
         throw new KeyNotFoundException("Categoria no encontrada");
-        // combia el estado
-        categoria.IdEstado = 2;
-        _context.Categoria.Update(categoria);
-        await _context.SaveChangesAsync();
-        return categoria;
+    
+    if (categoria.IdEstado == 1) 
+    {
+        categoria.IdEstado = 2; 
+    }
+    else if (categoria.IdEstado == 2)
+    {
+        categoria.IdEstado = 1;
+    }
+    
+    _context.Categoria.Update(categoria);
+    await _context.SaveChangesAsync();
+    
+    return categoria;
     }
 
     public async Task<Categoria> GetCategoriaById(int Id)
