@@ -7,5 +7,10 @@
         public DateTime FechaAsignacion { get; set; }
         public int IdEstado { get; set; }
         public int IdRol { get; set; }
+
+        public Estado Estado { get; set; }
+        public Rol Rol { get; set; }
+        public ICollection<Usuario> Usuario { get; set; }
+
     }
 }

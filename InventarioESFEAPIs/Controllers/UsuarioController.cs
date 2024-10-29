@@ -1,3 +1,4 @@
+using InventarioESFEAPIs.DTO;
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Implementaciones;
 using InventarioESFEAPIs.Services.Interfaces;
@@ -40,15 +41,25 @@ namespace InventarioESFEAPIs.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Usuario>> CreateUsuario([FromBody] Usuario usuario)
+        public async Task<IActionResult> CrearUsuario(UsuarioDTO usuarioDto)
         {
-            // Si el usuario tiene un ID especificado, lo ignoramos
-            usuario.Id = 0; // Reseteamos el ID a 0 para asegurarnos de que no se use
+            var usuario = new Usuario
+            {
+                Nombre = usuarioDto.Nombre,
+                Apellido = usuarioDto.Apellido,
+                Telefono = usuarioDto.Telefono,
+                IdEstado = usuarioDto.IdEstado
+            };
 
-            // Crea el nuevo usuario
-            var usuarioCreado = await _usuarioService.CreateUsuario(usuario);
-            return CreatedAtAction(nameof(GetUsuario), new { id = usuarioCreado.Id }, usuarioCreado);
+            // Asegúrate de que `usuarioDto` tenga también el `rolId`
+            int rolId = usuarioDto.IdRol;  // Asumiendo que el rolId viene en el DTO
+
+            // Llama al servicio pasando ambos parámetros
+            var usuarioCreado = await _usuarioService.CreateUsuario(usuario, rolId);
+
+            return Ok(usuarioCreado);
         }
+
 
 
         [HttpPut("{id}")]

@@ -25,15 +25,28 @@ namespace InventarioESFEAPIs.Services.Implementaciones
 
         public async Task<Estado> SuprimirEstadoAsync(int Id)
         {
-            var estado = await _context.Estado.FirstOrDefaultAsync(e => e.Id == Id);
+            var estado = await _context.Estado.FindAsync(Id);
+
             if (estado == null)
-                throw new KeyNotFoundException("estado no encontrada");
-            // combia el estado
-            estado.Id = 2;
+                throw new KeyNotFoundException("Estado no encontrada");
+
+            estado.Id= estado.Id == 1 ? 2 : 1;
+
             _context.Estado.Update(estado);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores, logueo o rethrow de la excepción
+                throw new Exception("Error al actualizar el estado", ex);
+            }
+
             return estado;
         }
+
 
         public async Task<IEnumerable<Estado>> GetEstado()
         {

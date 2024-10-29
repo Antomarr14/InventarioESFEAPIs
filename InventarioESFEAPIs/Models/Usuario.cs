@@ -11,5 +11,6 @@ public class Usuario
     public int IdEstado {get; set;}
     public int IdRol {get; set;}
      public ICollection<Articulo> Articulos { get; set; }
-    
+    public ICollection<UsuarioRol> UsuarioRol { get; set; }
+
 }

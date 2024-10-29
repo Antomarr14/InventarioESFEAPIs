@@ -14,12 +14,28 @@ public class UsuarioService : IUsuarioService
     {
         _context = inventarioESFEContext;
     }
-public async Task<Usuario> CreateUsuario(Usuario usuario)
-{
-    await _context.Usuario.AddAsync(usuario);
-    await _context.SaveChangesAsync();
-    return usuario;
-}
+    public async Task<Usuario> CreateUsuario(Usuario usuario, int rolId)
+    {
+        // Agregar el nuevo usuario
+        await _context.Usuario.AddAsync(usuario);
+        await _context.SaveChangesAsync();
+
+        // Crear la relación en la tabla UsuarioRol con FechaAsignacion
+        var usuarioRol = new UsuarioRol
+        {
+            IdUsuario = usuario.Id,  // El usuario.Id se obtiene después de SaveChangesAsync()
+            IdRol= rolId,
+            FechaAsignacion = DateTime.Now,  // Fecha actual
+            IdEstado = 1  // Por ejemplo, puedes definir 1 como "Activo"
+        };
+
+        // Agregar la relación de usuario y rol
+        await _context.UsuarioRol.AddAsync(usuarioRol);
+        await _context.SaveChangesAsync();
+
+        return usuario;
+    }
+
 
 
     public async Task<Usuario> SuprimirUsuarioAsync(int Id)

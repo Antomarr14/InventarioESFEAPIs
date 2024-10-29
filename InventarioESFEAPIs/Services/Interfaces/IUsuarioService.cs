@@ -7,7 +7,7 @@ public interface IUsuarioService
 {
     Task<IEnumerable<Usuario>> GetUsuarios();
     Task<Usuario> GetUsuarioById(int Id);
-    Task<Usuario> CreateUsuario(Usuario usuario);
+    Task<Usuario> CreateUsuario(Usuario usuario, int rolId);
     Task<Usuario> UpdateUsuario(Usuario usuario, int Id);
     Task<Usuario> SuprimirUsuarioAsync(int Id);
 }

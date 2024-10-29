@@ -41,7 +41,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventarioESFEAPIs.Models.Articulo, InventarioESFEAPIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventarioESFEAPIs.DTO.ArticuloDTO, InventarioESFEAPIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -60,14 +60,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "articulo",
-        "Type": "InventarioESFEAPIs.Models.Articulo",
+        "Name": "articuloDto",
+        "Type": "InventarioESFEAPIs.DTO.ArticuloDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "InventarioESFEAPIs.Models.Articulo",
+        "Type": "InventarioESFEAPIs.DTO.ArticuloDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -91,7 +91,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.DTO.ArticuloDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "InventarioESFEAPIs.Controllers.ArticuloController",
@@ -107,8 +117,8 @@
         "IsRequired": true
       },
       {
-        "Name": "articulo",
-        "Type": "InventarioESFEAPIs.Models.Articulo",
+        "Name": "articuloDto",
+        "Type": "InventarioESFEAPIs.DTO.ArticuloDTO",
         "IsRequired": true
       }
     ],
@@ -117,18 +127,28 @@
   {
     "ContainingType": "InventarioESFEAPIs.Controllers.ArticuloController",
     "Method": "SuprimirArticulo",
-    "RelativePath": "api/Articulo/{Id}",
-    "HttpMethod": "PATCH",
+    "RelativePath": "api/Articulo/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.DTO.ArticuloDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "InventarioESFEAPIs.Controllers.CategoriaController",
@@ -588,6 +608,115 @@
     "Parameters": [
       {
         "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.ImagenController",
+    "Method": "GetImagenes",
+    "RelativePath": "api/Imagen",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[InventarioESFEAPIs.DTO.ImagenDTO, InventarioESFEAPIs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.ImagenController",
+    "Method": "CrearImagen",
+    "RelativePath": "api/Imagen",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "imagenDTO",
+        "Type": "InventarioESFEAPIs.DTO.ImagenDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.DTO.ImagenDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.ImagenController",
+    "Method": "GetImagenById",
+    "RelativePath": "api/Imagen/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "InventarioESFEAPIs.DTO.ImagenDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.ImagenController",
+    "Method": "UpdateImagen",
+    "RelativePath": "api/Imagen/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "imagenDTO",
+        "Type": "InventarioESFEAPIs.DTO.ImagenDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InventarioESFEAPIs.Controllers.ImagenController",
+    "Method": "DeleteImagen",
+    "RelativePath": "api/Imagen/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -1408,29 +1537,19 @@
   },
   {
     "ContainingType": "InventarioESFEAPIs.Controllers.UsuarioController",
-    "Method": "CreateUsuario",
+    "Method": "CrearUsuario",
     "RelativePath": "api/Usuario",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuario",
-        "Type": "InventarioESFEAPIs.Models.Usuario",
+        "Name": "usuarioDto",
+        "Type": "InventarioESFEAPIs.DTO.UsuarioDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "InventarioESFEAPIs.Models.Usuario",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "InventarioESFEAPIs.Controllers.UsuarioController",
