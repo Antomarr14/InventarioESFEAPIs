@@ -20,15 +20,27 @@ namespace InventarioESFEAPIs.Services.Implementaciones
             return rolcontrol;
         }
 
-        public async Task<RolControl> SuprimirRolControlAsync(int Id)
+        public async Task<RolControl> SuprimirEstadoAsync(int Id)
         {
-            var rolcontrol = await _context.RolControl.FirstOrDefaultAsync(r => r.Id == Id);
+            var rolcontrol = await _context.RolControl.FindAsync(Id);
+
             if (rolcontrol == null)
-                throw new KeyNotFoundException("rolcontrol no encontrada");
-            // combia el estado
-            rolcontrol.IdEstado = 2;
+                throw new KeyNotFoundException("Rolcontrol no encontrada");
+
+            rolcontrol.Id = rolcontrol.Id == 1 ? 2 : 1;
+
             _context.RolControl.Update(rolcontrol);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores, logueo o rethrow de la excepción
+                throw new Exception("Error al actualizar el estado", ex);
+            }
+
             return rolcontrol;
         }
 
@@ -52,6 +64,11 @@ namespace InventarioESFEAPIs.Services.Implementaciones
             rolcontrolExistente.IdControl = rolcontrol.IdControl;
             await _context.SaveChangesAsync();
             return rolcontrol;
+        }
+
+        public Task<RolControl> SuprimirRolControlAsync(int Id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
