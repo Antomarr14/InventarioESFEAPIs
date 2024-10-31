@@ -1,5 +1,6 @@
 using System;
 using InventarioESFEAPIs.Context;
+using InventarioESFEAPIs.DTO;
 using InventarioESFEAPIs.Models;
 using InventarioESFEAPIs.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -14,22 +15,28 @@ public class UsuarioService : IUsuarioService
     {
         _context = inventarioESFEContext;
     }
-    public async Task<Usuario> CreateUsuario(Usuario usuario, int rolId)
+    public async Task<Usuario> CreateUsuario(UsuarioDTO usuarioDTO, int rolId)
     {
-        // Agregar el nuevo usuario
+        // Crear el nuevo usuario
+        var usuario = new Usuario
+        {
+            Nombre = usuarioDTO.Nombre,
+            Apellido = usuarioDTO.Apellido,
+            Telefono = usuarioDTO.Telefono,
+            IdRol = rolId,
+            IdEstado = usuarioDTO.IdEstado
+        };
         await _context.Usuario.AddAsync(usuario);
         await _context.SaveChangesAsync();
 
-        // Crear la relación en la tabla UsuarioRol con FechaAsignacion
         var usuarioRol = new UsuarioRol
         {
-            IdUsuario = usuario.Id,  // El usuario.Id se obtiene después de SaveChangesAsync()
-            IdRol= rolId,
-            FechaAsignacion = DateTime.Now,  // Fecha actual
-            IdEstado = 1  // Por ejemplo, puedes definir 1 como "Activo"
+            IdUsuario = usuario.Id,  
+            IdRol = rolId,
+            FechaAsignacion = DateTime.Now, 
+            IdEstado = 1  
         };
 
-        // Agregar la relación de usuario y rol
         await _context.UsuarioRol.AddAsync(usuarioRol);
         await _context.SaveChangesAsync();
 
